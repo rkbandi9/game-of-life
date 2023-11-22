@@ -8,14 +8,12 @@ node('node1_jdk')
          sh 'export PATH="/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:$PATH" && mvn package'
 
     stage('archive the artifact')
-         onlyIfSuccessful: yes,
          archiveArtifacts artifacts: '**/target/*.war'
     
     stage('show test result')
-         junit testResults: '**/surefire-reports/TEST-*.xml',
-         allowEmptyResults: yes
+         junit testResults: '**/surefire-reports/TEST-*.xml'
+         
 }
-
     
    
    
